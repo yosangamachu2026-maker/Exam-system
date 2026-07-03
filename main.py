@@ -1,6 +1,6 @@
 from kivy.app import App
 from kivy.lang import Builder
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import ScreenManager
 
 from screens.login import LoginScreen
 from screens.dashboard import DashboardScreen
@@ -10,7 +10,8 @@ from screens.student import StudentScreen
 from screens.exam import ExamScreen
 
 
-class ExamApp(App):
+class ExamSystemApp(App):
+
     def build(self):
         Builder.load_file("main.kv")
 
@@ -23,8 +24,10 @@ class ExamApp(App):
         sm.add_widget(StudentScreen(name="student"))
         sm.add_widget(ExamScreen(name="exam"))
 
+        sm.current = "login"
+
         return sm
 
 
 if __name__ == "__main__":
-    ExamApp().run()
+    ExamSystemApp().run()
